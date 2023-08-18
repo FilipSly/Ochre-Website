@@ -1,4 +1,4 @@
-![Ochre Banner](https://github.com/FilipSly/Ochre/blob/DevBuild-1/banner.png?raw=true)
+![Ochre Banner](https://github.com/FilipSly/Ochre/blob/DevBuild/banner.png?raw=true)
 # Ochre
  Ochre. Messaging done Simple.
 
