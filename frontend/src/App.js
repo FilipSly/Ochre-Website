@@ -4,7 +4,9 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Register from './pages/Register';
+import GitHub from './pages/Github';
 
+// routes
 function App() {
   return (
     <div className="App">
@@ -23,6 +25,10 @@ function App() {
             <Route
               path="/register"
               element={<Register />}
+            />
+            <Route
+              path="/github"
+              element={<GitHub />}
             />
           </Routes>
         </div>

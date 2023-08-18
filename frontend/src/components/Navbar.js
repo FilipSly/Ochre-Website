@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+// navbar buttons
 const Navbar = () => {
     return (
         <header>
@@ -13,7 +14,7 @@ const Navbar = () => {
                 <Link to="/">
                     Contact
                 </Link>
-                <Link to="/">
+                <Link to="/github">
                     GitHub
                 </Link>
                 <Link to="/register">
