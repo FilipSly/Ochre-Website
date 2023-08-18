@@ -1,15 +1,37 @@
 import { useState } from "react"
+import Modal from "./Modal"
+import { motion, AnimatePresence } from "framer-motion"
 
 const RegisterForm = () => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleRegister = async (e) => {
         e.preventDefault()
 
+        if (isVisible === false) {
+            setIsVisible(true)
+        } else {
+            setIsVisible(false);
+        }
+
         const user = { username, email, password }
+
+        if (username.length < 1) {
+            setError('Username cannot be Blank!');
+            return
+        }
+        else if (email.length < 1) {
+            setError('Email cannot be Blank!');
+            return
+        }
+        else if (password.length < 1) {
+            setError('Password cannot be Blank!');
+            return
+        }
 
         const response = await fetch('/api/register', {
             method: 'POST',
@@ -19,17 +41,17 @@ const RegisterForm = () => {
             }
         })
         
-        const json = await response.json()
+        const resp = await response.text()
 
-        if (!response.ok) {
-            setError(json.error)
+        if (!resp.ok) {
+            setError(resp.error);
         }
-        if (response.ok) {
+        else {
             setUsername('')
             setEmail('')
             setPassword('')
             setError(null)
-            console.log('New user registered!', json)
+            console.log('New user registered!', resp)
         }
     }
 
@@ -59,6 +81,7 @@ const RegisterForm = () => {
             />
             <p> </p>
             <button>Register</button>
+            <AnimatePresence>{isVisible && <Modal text={error} />}</AnimatePresence>
         </form>
     )
 }
