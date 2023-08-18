@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Modal from "./Modal"
+
 import { motion, AnimatePresence } from "framer-motion"
 
 const RegisterForm = () => {
@@ -41,16 +42,20 @@ const RegisterForm = () => {
             }
         })
         
-        const resp = await response.text()
+        const resp = await response.json()
 
-        if (!resp.ok) {
-            setError(resp.error);
+        if (resp.error) {
+            if (resp.error.includes('username')) {
+                setError('Username already exists!')
+            } else if (resp.error.includes('email')) {
+                setError('Email already in use!')
+            }
         }
         else {
             setUsername('')
             setEmail('')
             setPassword('')
-            setError(null)
+            setError('Success!')
             console.log('New user registered!', resp)
         }
     }

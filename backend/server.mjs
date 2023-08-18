@@ -4,8 +4,8 @@ import "./loadEnvironment.mjs";
 import records from "./routes/record.mjs";
 import mongoose from "mongoose";
 import registerRoutes from "./routes/user.mjs";
-const authRoute = require("./routes/authRoute");
-const cookieParser = require("cookie-parser");
+import authRoute from "./routes/authRoute.js";
+import cookieParser from "cookie-parser";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
