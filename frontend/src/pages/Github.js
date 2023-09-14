@@ -9,6 +9,9 @@ const GitHub = () => {
             <Link to='https://github.com/FilipSly/Ochre'>
                 Link Here
             </Link>
+            <Link to='https://github.com/FilipSly/Ochre-Website'>
+                Link to Ochre Website source code
+            </Link>
         </div>
     )
 }
